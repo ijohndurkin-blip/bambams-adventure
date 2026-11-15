@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <title>Bam Bam's Adventures | Animates</title>
+  <meta name="description" content="Bam Bam's Adventures: a friendly 3D learning game for 5 to 8 year olds. Explore the island with Bam Bam and practise numbers, letters, shapes and facts about our world.">
+  <meta name="theme-color" content="#3fa9f5">
+  <meta property="og:title" content="Bam Bam's Adventures">
+  <meta property="og:description" content="A friendly 3D learning game for 5 to 8 year olds, from Animates.">
+  <meta property="og:image" content="assets/bambam.jpg">
+  <link rel="icon" type="image/png" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three.module.min.js" } }
+  </script>
+</head>
+<body>
+  <canvas id="game" aria-label="Bam Bam's island"></canvas>
+
+  <!-- ============ Title screen ============ -->
+  <section id="title" class="screen">
+    <div class="title-card">
+      <div class="presents"><img src="assets/animates-logo.png" alt="Animates" width="202" height="56"><span>presents</span></div>
+      <h1 aria-label="Bam Bam's Adventures">
+        <span class="row"><i>B</i><i>a</i><i>m</i> <i>B</i><i>a</i><i>m</i><i>’</i><i>s</i></span>
+        <span class="row small"><i>A</i><i>d</i><i>v</i><i>e</i><i>n</i><i>t</i><i>u</i><i>r</i><i>e</i><i>s</i></span>
+      </h1>
+      <p class="tagline">Explore the island. Learn something new. Collect the stars!</p>
+      <div class="ages" role="group" aria-label="How old are you?">
+        <span>I am</span>
+        <button data-age="5">5</button><button data-age="6">6</button><button data-age="7">7</button><button data-age="8">8</button>
+      </div>
+      <button id="play" class="big-btn">▶ Play</button>
+      <p class="grownups">For grown-ups: no adverts, no accounts, no chat, no links out. Progress is saved only on this device.</p>
+    </div>
+    <div id="loading">Loading Bam Bam’s island…</div>
+  </section>
+
+  <!-- ============ In-game HUD ============ -->
+  <div id="hud" hidden>
+    <div id="stars" aria-live="polite"><span class="star">⭐</span><b id="star-count">0</b></div>
+
+    <div id="buttons">
+      <button id="btn-leave" title="Leave this game" hidden>✖</button>
+      <button id="btn-hat" title="Change hat">🎩</button>
+      <button id="btn-book" title="Sticker book">📒</button>
+      <button id="btn-voice" title="Voice on or off">🗣️</button>
+      <button id="btn-music" title="Music on or off">🎵</button>
+    </div>
+
+    <div id="question" hidden>
+      <div id="q-zone"></div>
+      <div id="q-text"></div>
+      <div id="q-foot">
+        <button id="q-speak" title="Say it again">🔊</button>
+        <div id="q-pips"></div>
+      </div>
+    </div>
+
+    <div id="hint"></div>
+    <div id="toast" hidden></div>
+    <button id="btn-jump" title="Jump">⬆</button>
+  </div>
+
+  <!-- ============ Quest complete ============ -->
+  <div id="result" class="modal" hidden>
+    <div class="modal-card">
+      <div class="medal" id="r-medal">🏅</div>
+      <h2 id="r-title">Well done!</h2>
+      <p id="r-text"></p>
+      <div class="row-btns">
+        <button id="r-again" class="big-btn">▶ Play again</button>
+        <button id="r-explore" class="big-btn alt">🏝️ Explore</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Sticker book ============ -->
+  <div id="book" class="modal" hidden>
+    <div class="modal-card wide">
+      <h2>📒 Bam Bam’s Sticker Book</h2>
+      <div id="book-grid"></div>
+      <p id="book-hats"></p>
+      <div class="row-btns">
+        <button id="book-close" class="big-btn">Back to the island</button>
+      </div>
+      <button id="book-reset" class="link-btn">Grown-ups: start again from the beginning</button>
+    </div>
+  </div>
+
+  <!-- ============ Break reminder ============ -->
+  <div id="break" class="modal" hidden>
+    <div class="modal-card">
+      <div class="medal">😴</div>
+      <h2>Time for a wiggle break!</h2>
+      <p>You have been playing for a while. Bam Bam is going to stretch, have a drink and look out of the window. You should too!</p>
+      <div class="row-btns"><button id="break-ok" class="big-btn">OK!</button></div>
+    </div>
+  </div>
+
+  <noscript>Bam Bam's Adventures needs JavaScript switched on to play.</noscript>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
